@@ -1,0 +1,14 @@
+# Block
+host: kiq
+datacenter:
+  location: São Paulo
+  router: 42
+roles:
+  - web
+  - dns
+
+# Flow
+host2: "kiq"
+datacenter2: { location: São Paulo
+  ,router: 42}
+roles2: [ web , dns ]

@@ -1,0 +1,18 @@
+%TAG ! tag:host:kiq:
+---
+host: kiq
+datacenter:
+  location: !KIQ São Paulo
+  router: 42
+roles:
+  - web
+  - dns
+---
+host: kiq
+datacenter:
+  location: !KIQ São Paulo
+  router: !!str 42 # U can explicit the data type with tags, like str to string
+  length: !!float 12,5 # float to float. 
+roles:
+  - web
+  - dns

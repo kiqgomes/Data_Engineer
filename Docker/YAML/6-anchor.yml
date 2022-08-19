@@ -1,0 +1,15 @@
+host: &Host kiq # Anchor, is like a variable, that u can declare, with '&'
+datacenter: 
+  location: &State São Paulo
+  router: 42
+roles: 
+  - web
+  - dns
+---
+host: *Host # and reuse with '*'
+datacenter: 
+  location: *State
+  router: 42
+roles: 
+  - web
+  - dns

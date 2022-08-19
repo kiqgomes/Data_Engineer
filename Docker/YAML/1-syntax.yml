@@ -1,0 +1,9 @@
+# Key-Value pattern
+host: kiq
+datacenter: # Info under info 
+  location: São Paulo
+  router: 42
+roles: # '-' to make a list
+  - web
+  - dns
+  

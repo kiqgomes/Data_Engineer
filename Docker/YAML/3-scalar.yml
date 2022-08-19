@@ -1,0 +1,11 @@
+employees: | # Spaces will be respected on all text
+  Kaique - Data Enginner
+  Claudio - Data Analyst
+  Laura - Data Scientist
+messages: > # Spaces don't be respected on the first text
+  Hoje é o grande dia,
+  vai dar tudo certo.
+  Confia
+
+    2022-08-17 
+    Kaique to Claudio

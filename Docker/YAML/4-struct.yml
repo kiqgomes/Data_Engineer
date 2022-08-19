@@ -1,0 +1,17 @@
+---
+host: kiq # Scalar
+datacenter: # Dict/Map
+  location: São Paulo
+  router: 42
+roles: # List
+  - web
+  - dns
+--- # We can use the same name, because this '---' is like to create a other config on the same file. 
+host: kiq
+datacenter: 
+  location: São Paulo
+  router: 42
+roles: 
+  - web
+  - dns
+  
