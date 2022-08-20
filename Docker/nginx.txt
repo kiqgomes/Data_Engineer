@@ -1,0 +1,5 @@
+Running a nginx container
+    docker run -d -e NGINX_ENTRYPOINT_QUITE_LOGS=1 -p 83:80 nginx:1.19.4-alpine
+ 
+Mirror port:
+    -p 'my_port':'container_port'

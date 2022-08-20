@@ -1,0 +1,38 @@
+Version:
+    docker --version
+
+Help:
+    docker --help
+
+List containers:
+    docker container ls -- All containers
+    docker ps -- On execution
+    docker ps -a -- On execution and stopped
+
+Pull image:
+    docker pull 'image'
+    
+    Specific version:
+        docker pull 'image':'version' -- Best practice
+
+Inspect image:
+    docker image inspect 'image_name' OR docker image inspect 'image_id' 
+
+Pull and run of container:
+    docker run 'image_name'
+
+List images:
+    docker images
+
+Delete image:
+    docker image rm 'image_name' OR docker image rm 'image_id'
+    docker image rm -f 'image_id' -- Flag 'f' to do a forced delete 
+
+Start container
+    docker container start 'container_name' OR docker container start 'container_id' 
+    
+    Works too:
+        docker start 'container_name' OR docker start 'container_id'
+
+Copy image:
+    docker image tag 'image_name':'version' 'new_image_name'
