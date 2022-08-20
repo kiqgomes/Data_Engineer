@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# GCP Credentials
+beam-apache-b9f4ef9ab998.json
+
 # Distribution / packaging
 .Python
 build/
