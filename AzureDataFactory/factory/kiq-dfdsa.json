@@ -1,0 +1,9 @@
+{
+	"name": "kiq-dfdsa",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ddce5c81-16ab-4c17-80e4-f100964a7c4e",
+		"tenantId": "aa495f2c-d37e-4b58-ab95-bf0874a3adb2"
+	}
+}
