@@ -9,9 +9,6 @@ __pycache__/
 # GCP Credentials
 beam-apache-fcf078c4c4b0.json
 
-#ADF
-AzureDataFactory/
-
 # Distribution / packaging
 .Python
 build/
