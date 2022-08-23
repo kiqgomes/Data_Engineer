@@ -1,0 +1,6 @@
+docker build -f Dockerfile -t edbkiq/web_nginx:v1 .
+
+Decomposition:
+    -f -- To set your Dockerfile name
+    -t 'dockerhub_user'/'custom_name':'tag_version' -- To create a tag of your build
+    . -- Set where are the Dockerfile
