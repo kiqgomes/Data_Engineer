@@ -83,29 +83,6 @@
 								"parameters": {}
 							}
 						]
-					},
-					{
-						"name": "Filter1",
-						"type": "Filter",
-						"dependsOn": [
-							{
-								"activity": "input",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "Nome",
-								"type": "Expression"
-							},
-							"condition": {
-								"value": "Bob",
-								"type": "Expression"
-							}
-						}
 					}
 				],
 				"policy": {
