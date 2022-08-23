@@ -3,3 +3,6 @@ Running a nginx container
  
 Mirror port:
     -p 'my_port':'container_port'
+
+Execute something on a up container
+    docker exec -it 'name_container' 'exec_item'

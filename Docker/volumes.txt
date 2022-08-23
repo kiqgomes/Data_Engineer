@@ -1,0 +1,1 @@
+docker run -v 'absolute_path_my_pc:absolute_path_container'

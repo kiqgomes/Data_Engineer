@@ -1,0 +1,6 @@
+docker run --name 'container_custom_name' --rm -i -t alpine:'version' sh
+
+Decomposition:
+    --name - Flag used to give a custom name to your container
+    --rm -i -t - https://docs.docker.com/engine/reference/run/ 
+    sh - Start the shell of this image 
