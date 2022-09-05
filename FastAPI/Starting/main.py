@@ -27,3 +27,12 @@ if __name__ == '__main__':
     uvicorn.run("main:app",host="127.0.0.1",port=8000,log_level="info"\
                 ,reload=True)
 # Using python 'app_name'.py on terminal, it's same that what we did before, but now on the python code
+
+
+#    Uvicorn is a development deploy space, to production we use gunicorn.
+
+#    Deploying with the command below
+
+#    gunicorn 'python_code':'FastAPI_name_declaration' -w 4 -k uvicorn.workers.UvicornWorker
+#        -w -- We use to set how many workers will be used on this application
+#        -k -- Class that we want to execute 
