@@ -1,0 +1,5 @@
+docker run --net none --name 'container_custom_name' --rm -i -t alpine:'version' sh
+    --net has three options, none, host and bridge
+
+docker exec 'container_name' sh -c "ping 172.17.0.3"
+    Ping test between bridges
