@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * prediction
  */
-public class prediction {
+public class Prediction {
 
     public static void main(String[] args) {
         
@@ -40,7 +40,7 @@ public class prediction {
             System.exit(1);
         }
 
-        System.out.printf("Prevision of gas cost $%d",(int)((theta0 + theta1 * mileage/scale)*scale));
+        System.out.printf("Prevision of gas cost $%d\n",(int)((theta0 + theta1 * mileage/scale)*scale));
     }
     
 }
