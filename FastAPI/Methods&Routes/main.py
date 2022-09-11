@@ -2,8 +2,10 @@
     Main app, loads the FastAPI with uvicorn server
     and contains our data.
 """
-from fastapi import FastAPI, HTTPException, status, jsonResponse
+from fastapi import FastAPI, HTTPException, Path, Response, status
 from model import Person
+
+# from fastapi.responses import JSONResponse Bugging 
 
 people = {
     1: {
@@ -42,7 +44,10 @@ async def get_people():
     return people
 
 @app.get('/people/{id}')
-async def get_person(id: int):
+async def get_person(id: int = Path(default=None,title="Person ID"\
+                    ,description='Could be between 1 - 3',gt=0,le=3)): \
+                    # gt -> greater than | lt -> less than or equal \
+                    # Will customize our error message
     """
         Get a specific person and handling with errors.
     """
@@ -78,14 +83,19 @@ async def put_person(id: int,person: Person):
             ,detail=f"ID: {id} don't exists"
         )
 
-@app.delete('/people/{id}', status_code=)
+@app.delete('/people/{id}')
 async def delete_person(id: int):
     """
         Deleting a item.
     """
     try:
         del people[id]
-        return people
+        # Bugging
+        # return JSONResponse(
+            # status_code=status.HTTP_204_NO_CONTENT
+            # ,content=people
+            # )
+        return Response(status_code=status.HTTP_204_NO_CONTENT)
     except KeyError as exk:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND
