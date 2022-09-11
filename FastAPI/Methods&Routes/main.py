@@ -2,7 +2,9 @@
     Main app, loads the FastAPI with uvicorn server
     and contains our data.
 """
-from fastapi import FastAPI, HTTPException, Path, Response, status
+from typing import Optional
+
+from fastapi import FastAPI, HTTPException, Path, Query, Response, status
 from model import Person
 
 # from fastapi.responses import JSONResponse Bugging 
@@ -101,6 +103,14 @@ async def delete_person(id: int):
             status_code=status.HTTP_404_NOT_FOUND
             ,detail=f'ID: {id} not found'
         ) from exk
+
+@app.get('/calc')
+async def get_calc(a: float,b: float = Query(default=None,le=10)\
+                    ,c: Optional[float] = None): # Query has the same function that the Path
+    """
+        Calculating by a query parameter
+    """
+    return {"sum": a+b+c if c else a+b}
 
 if __name__ == "__main__":
     import uvicorn
