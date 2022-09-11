@@ -4,7 +4,8 @@
 """
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException, Path, Query, Response, status
+from fastapi import (FastAPI, Header, HTTPException, Path, Query, Response,
+                     status)
 from model import Person
 
 # from fastapi.responses import JSONResponse Bugging 
@@ -106,10 +107,14 @@ async def delete_person(id: int):
 
 @app.get('/calc')
 async def get_calc(a: float,b: float = Query(default=None,le=10)\
-                    ,c: Optional[float] = None): # Query has the same function that the Path
+                    ,c: Optional[float] = None \
+                    ,x_creator: str = Header(default="Kaique")):
+                    # Header, used to use some data that can come on the Header
+                    # Query has the same function that the Path
     """
         Calculating by a query parameter
     """
+    print (f"Creator: {x_creator}")
     return {"sum": a+b+c if c else a+b}
 
 if __name__ == "__main__":
