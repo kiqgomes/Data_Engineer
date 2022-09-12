@@ -9,6 +9,8 @@ __pycache__/
 # GCP Credentials
 beam-apache-fcf078c4c4b0.json
 
+Deploing/
+
 # Distribution / packaging
 .Python
 build/

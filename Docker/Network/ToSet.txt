@@ -3,3 +3,6 @@ docker run --net none --name 'container_custom_name' --rm -i -t alpine:'version'
 
 docker exec 'container_name' sh -c "ping 172.17.0.3"
     Ping test between bridges
+
+docker network create --driver bridge other_range
+    Create a new range of ips -- 172.18.0.1 -- that can be used to isolate containers
