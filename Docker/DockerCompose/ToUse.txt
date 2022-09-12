@@ -1,0 +1,5 @@
+docker compose build
+    - Build your service by docker compose
+
+docker compose down
+    - Stop your service

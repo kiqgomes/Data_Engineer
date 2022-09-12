@@ -1,0 +1,79 @@
+version: "3.8"
+
+services:
+  nginx:
+    build: 
+      dockerfile: ./nginx.dockerfile
+      context: .
+    image: edbkiq/nginx_fusion:v1
+    container_name: nginx
+    ports:
+      - "8080:80"
+    networks:
+      - nwfusion
+    depends_on:
+      - fusion1
+      - fusion2
+      - fusion3
+
+  fusion1:
+    build:
+      dockerfile: ./fusion.dockerfile
+      context: .
+    image: edbkiq/fusion:v1
+    container_name: fusion1
+    ports:
+      - "8000"
+    networks:
+      - nwfusion
+    depends_on:
+      - postgres
+
+  fusion2:
+    build:
+      dockerfile: ./fusion.dockerfile
+      context: .
+    image: edbkiq/fusion:v1
+    container_name: fusion2
+    ports:
+      - "8000"
+    networks:
+      - nwfusion
+    depends_on:
+      - postgres
+
+  fusion3:
+    build:
+      dockerfile: ./fusion.dockerfile
+      context: .
+    image: edbkiq/fusion:v1
+    container_name: fusion3
+    ports:
+      - "8000"
+    networks:
+      - nwfusion
+    depends_on:
+      - postgres
+
+  
+  postgres:
+    build: 
+      dockerfile: ./postgres.dockerfile
+      context: .
+    image: edbkiq/postgres_fusion:v1
+    container_name: postgres
+    ports:
+      - "5432"
+    networks:
+      - nwfusion
+    volumes:
+      - pgdata:/var/lib/postgres/data/
+
+  
+
+networks:
+  nwfusion:
+    driver: bridge
+
+volumes:
+  pgdata:
