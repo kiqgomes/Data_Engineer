@@ -11,6 +11,10 @@ beam-apache-fcf078c4c4b0.json
 
 Fusion/
 
+.metals
+
+.vscode
+
 # Distribution / packaging
 .Python
 build/
