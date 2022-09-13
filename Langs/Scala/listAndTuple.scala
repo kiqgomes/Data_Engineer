@@ -13,5 +13,5 @@
     
     println(itens._5)
 
-    val t_infninte = (1,5,6,8,2,3,96,4,8,"Arroz","Frango",'A')
+    val t_infinite = (1,5,6,8,2,3,96,4,8,"Arroz","Frango",'A')
 
