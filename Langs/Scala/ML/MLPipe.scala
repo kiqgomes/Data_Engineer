@@ -1,24 +1,24 @@
 import org.apache.spark.sql.SparkSession
 
 import org.apache.log4j._
-Logger.getLogger("org").setLevel(Level.WARN)
+Logger.getLogger("org").setLevel(Level.ERROR)
 
 // Creating the Spark Session
-val spark = SparkSession
-            .builder()
-            .getOrCreate()
+val spark = (SparkSession
+                .builder()
+                .appName("ML-Pipe")
+                .getOrCreate())
 
-import org.apache.spark.ml.KMeans // Import the model from Spark ML
+import org.apache.spark.ml.clustering.KMeans // Import the model from Spark ML
 
 // Reading the Data
-val df = spark.read
+val df = (spark.read
         .option("header","true") // Reading the header
         .option("inferSchema","true") // Inferring a data schema
-        .csv("data.csv") // Data Type
+        .csv("data.csv")) // Data Type
 
 // Selecting the columns to train model
-val feature_data = df.select($"Fresh",$"Milk",$"Grocery"
-                            ,$"Frozen",$"Detergents_Paper",$"Delicatessen")
+val feature_data = df.select($"Fresh",$"Milk",$"Grocery",$"Frozen",$"Detergents_Paper",$"Delicatessen")
 println(df.schema)
 
 // Importing vectors to model data and made be useful to Spark ML
@@ -27,27 +27,23 @@ import org.apache.spark.ml.feature.{VectorAssembler,StringIndexer,VectorIndexer,
 import org.apache.spark.ml.linalg.Vectors
 
 // Assembler receive the VectorAssembler object
-val assembler = new VectorAssembler()
-                    .setInputCols(Array("Fresh","Milk","Grocery","Frozen"
-                    ,"Detergents_Paper","Delicatessen"))
-                    .setOutputCol("features")
+val assembler = new VectorAssembler().setInputCols(Array("Fresh","Milk","Grocery","Frozen","Detergents_Paper","Delicatessen")).setOutputCol("features")
 
 // And we use the assemble to transform our feature_data  
-val dataset = assembler
+val dataset = (assembler
                 .transform(feature_data)                
-                .select("features")
+                .select("features"))
 
-// Setting up out model Kmeans with a K=3 
+// Setting up out model Kmeans with a K=3 (K is a hyperparameter) 
 // K = Number of clusters (or group) that the data will bem separated
-val kmeans = new KMeans()
-                    .setK(3) // Kmeans hyperparameter
-                    .setSeed(1L) // Seed to that our model can be reproduced
+val kmeans = new KMeans().setK(3).setSeed(1L) // Seed to that our model can be reproduced
 
 // Training the model
 val model = kmeans.fit(dataset)
 
 val predict = model.transform(dataset)
 
+import org.apache.spark.ml.evaluation.ClusteringEvaluator 
 // Declaring the cluster (or group) evaluator
 val evaluator = new ClusteringEvaluator()
 
@@ -65,5 +61,6 @@ predict.collect().foreach(println)
 // Save results
 import java.io._
 val writer = new BufferedWriter(new FileWriter("predict.txt"))
+writer.write("Fresh,Milk,Grocery,Frozen,Detergents_Paper,Delicatessen,Group\n")
 predict.collect().foreach(x=>{writer.write(x.toString())})
 writer.close()
