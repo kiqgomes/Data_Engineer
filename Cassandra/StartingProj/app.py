@@ -16,7 +16,7 @@ def extracting_data():
     """
     logging.info("Starting the process")
 
-    data_path = "data_raw"
+    data_path = "raw_data"
 
     logging.info("Root processing path -> %s",data_path)
 

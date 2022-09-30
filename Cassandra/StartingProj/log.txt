@@ -1,0 +1,50 @@
+2022-09-30 02:33:48,306:Starting the process
+2022-09-30 02:33:48,306:Root processing path -> raw_data
+2022-09-30 02:33:48,307:Extracting the absolute path of each file
+2022-09-30 02:33:48,307:Consolidating all data on a unique file
+2022-09-30 02:33:48,325:Extraction succeed!
+2022-09-30 02:33:48,325:Starting the process block!
+2022-09-30 02:33:48,325:Filtering the important features
+2022-09-30 02:33:48,342:Transformation succeed!
+2022-09-30 02:33:48,346:Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['localhost'], lbp = None)
+2022-09-30 02:33:48,351:Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2022-09-30 02:33:48,352:Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2022-09-30 02:33:48,357:Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2022-09-30 02:33:48,377:Analytics 1 - Starting!
+2022-09-30 02:33:51,401:Analytics 1 succeed
+2022-09-30 02:33:51,981:Table Dropped
+2022-09-30 02:33:52,078:Pipeline succeed
+2022-09-30 02:34:27,497: Starting the process
+2022-09-30 02:34:27,497: Root processing path -> raw_data
+2022-09-30 02:34:27,498: Extracting the absolute path of each file
+2022-09-30 02:34:27,498: Consolidating all data on a unique file
+2022-09-30 02:34:27,515: Extraction succeed!
+2022-09-30 02:34:27,516: Starting the process block!
+2022-09-30 02:34:27,516: Filtering the important features
+2022-09-30 02:34:27,533: Transformation succeed!
+2022-09-30 02:34:27,534: Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['localhost'], lbp = None)
+2022-09-30 02:34:27,536: Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2022-09-30 02:34:27,537: Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2022-09-30 02:34:27,540: Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2022-09-30 02:34:27,555: Analytics 1 - Starting!
+2022-09-30 02:34:31,030: Analytics 1 succeed
+2022-09-30 02:34:31,270: Table Dropped
+2022-09-30 02:34:31,366: Pipeline succeed
+2022-09-30 02:35:28,007: Starting the process
+2022-09-30 02:35:28,007: Root processing path -> raw_data
+2022-09-30 02:35:28,007: Extracting the absolute path of each file
+2022-09-30 02:35:28,008: Consolidating all data on a unique file
+2022-09-30 02:35:28,027: Extraction succeed!
+2022-09-30 02:35:28,027: Starting the process block!
+2022-09-30 02:35:28,027: Filtering the important features
+2022-09-30 02:35:28,046: Transformation succeed!
+2022-09-30 02:35:28,047: Cluster.__init__ called with contact_points specified, but no load_balancing_policy. In the next major version, this will raise an error; please specify a load-balancing policy. (contact_points = ['localhost'], lbp = None)
+2022-09-30 02:35:28,049: Downgrading core protocol version from 66 to 65 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2022-09-30 02:35:28,049: Downgrading core protocol version from 65 to 5 for 127.0.0.1:9042. To avoid this, it is best practice to explicitly set Cluster(protocol_version) to the version supported by your cluster. http://datastax.github.io/python-driver/api/cassandra/cluster.html#cassandra.cluster.Cluster.protocol_version
+2022-09-30 02:35:28,052: Using datacenter 'datacenter1' for DCAwareRoundRobinPolicy (via host '127.0.0.1:9042'); if incorrect, please specify a local_dc to the constructor, or limit contact points to local cluster nodes
+2022-09-30 02:35:28,067: Analytics 1 - Starting!
+2022-09-30 02:35:31,309: Analytics 1 succeed
+2022-09-30 02:35:31,313: Result   artist  song      length
+0   None    85  222.824036
+2022-09-30 02:35:31,539: Table Dropped
+2022-09-30 02:35:31,636: Pipeline succeed
