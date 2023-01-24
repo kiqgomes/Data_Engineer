@@ -11,7 +11,11 @@ beam-apache-fcf078c4c4b0.json
 
 Fusion/
 
+secrets*.*
+
 raw_data/
+
+*-credentials.*
 
 .metals
 
