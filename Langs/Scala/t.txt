@@ -1,0 +1,9 @@
+Arch/reading.scala:@main def read() = 
+Arch/createAndWrite.scala:@main def arch() = 
+Arch/advancedWriter.scala:@main def adWriter(args: String*) =
+foreach.scala:@main def forcada(args: String*) =
+for.scala:@main def fordo(args: String*) =
+Hello.scala:@main def m() = 
+If.scala:@main def hello(args: String*)=
+listAndTuple.scala:@main def lista() =
+varAndBeyond.scala:@main def main(args: String*) = 
