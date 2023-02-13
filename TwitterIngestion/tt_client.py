@@ -23,7 +23,7 @@ words = lines\
                     f.split(lines.value,' ')
                     ).alias('word'))
         
-word_counts = word_counts.groupBy('word').count().orderBy('count',ascending=False)
+word_counts = words.groupBy('word').count().orderBy('count',ascending=False)
 
 
 q = word_counts\
