@@ -44,4 +44,3 @@ with DAG(
         python_callable=data_extract,
         op_kwargs={'air_data_end': '{{data_interval_end.strftime("%Y-%m-%d")}}'})
     task_0 >> task_1 >> task_00
-    
