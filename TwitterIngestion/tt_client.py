@@ -25,7 +25,6 @@ words = lines\
         
 word_counts = words.groupBy('word').count().orderBy('count',ascending=False)
 
-
 q = word_counts\
     .writeStream\
     .outputMode('complete')\
