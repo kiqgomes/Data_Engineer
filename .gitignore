@@ -15,7 +15,7 @@ secrets*.*
 
 db/
 
-raw_data/
+*data*/
 
 *-credentials.*
 
