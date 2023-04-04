@@ -34,24 +34,25 @@ def main_job():
             for l in reader:
                 # data.append(tuple(l)) Fix Mapping problem
                 data = dict(l)
-        
-        log.info(data)
+            
+                log.info(data)
 
-        log.info("Inserting data on table of Postgres")
-        
-        #ddl = "Insert into lab06.DIM_CLIENTE (%s) VALUES (%s)" % (",".join(data.keys()), ",".join("%s" for _ in data.keys())) 
-        
-        ddl = "Insert into lab6.\"DIM_CLIENTE\" (%s) VALUES (%s)" % (",".join(data.keys()), ",".join([item for item in data.values()]))
-        
-        p_operator = PostgresOperator(
-            task_id="load_data",
-            # sql = 'Insert into lab06.DIM_CLIENTE (id_cliente,nome_cliente,sobrenome_cliente) VALUES (%s,%s,%s)', Fix Mapping problem
-            sql=ddl,
-            postgres_conn_id="DWFormation",
-            # params = ext_op.python_callable() Fix Mapping problem
-            params=(data)
-        )
-        p_operator.execute(context=kwargs)
+                log.info("Inserting data on table of Postgres")
+                
+                #ddl = "Insert into lab06.DIM_CLIENTE (%s) VALUES (%s)" % (",".join(data.keys()), ",".join("%s" for _ in data.keys())) 
+                
+                ddl = "Insert into lab6.\"DIM_CLIENTE\" (%s) VALUES (%s)" % (",".join(data.keys()), ",".join([item for item in data.values()]))
+                
+                p_operator = PostgresOperator(
+                    task_id="load_data",
+                    # sql = 'Insert into lab06.DIM_CLIENTE (id_cliente,nome_cliente,sobrenome_cliente) VALUES (%s,%s,%s)', Fix Mapping problem
+                    sql=ddl,
+                    postgres_conn_id="DWFormation",
+                    # params = ext_op.python_callable() Fix Mapping problem
+                    params=(data)
+                )
+                p_operator.execute(context=kwargs)
+        # Under the Looping, te coding keeps going for all data
 
     extAndsaving_data = PythonOperator(
         task_id="extractAndsave_data",
