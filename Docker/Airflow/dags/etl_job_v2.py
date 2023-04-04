@@ -11,7 +11,7 @@ log.basicConfig(
     level=log.INFO
 )
 
-args_ = {"owner": "airflow", "retries": 1, "retries_delay": timedelta(seconds=60)}
+args_ = {"owner": "airflow", "retries": 1, "retries_delay": timedelta(seconds=10)}
 
 
 @dag(
@@ -39,7 +39,9 @@ def main_job():
 
         log.info("Inserting data on table of Postgres")
         
-        ddl = "Insert into lab06.DIM_CLIENTE (%s) VALUES (%s)" % (",".join(data.keys()), ",".join("%s" for _ in data.keys())) 
+        #ddl = "Insert into lab06.DIM_CLIENTE (%s) VALUES (%s)" % (",".join(data.keys()), ",".join("%s" for _ in data.keys())) 
+        
+        ddl = "Insert into lab6.\"DIM_CLIENTE\" (%s) VALUES (%s)" % (",".join(data.keys()), ",".join([item for item in data.values()]))
         
         p_operator = PostgresOperator(
             task_id="load_data",
