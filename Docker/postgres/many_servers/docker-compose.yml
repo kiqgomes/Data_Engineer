@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  dbfonte:
+    image: postgres
+    restart: always
+    container_name: dbfonte
+    environment:
+      - POSTGRES_PASSWORD=kiq01
+      - POSTGRES_USER=kiq 
+      - POSTGRES_DB=kiqdb
+    ports:
+      - 5433:5432
+
+  dbdestino:
+    image: postgres
+    restart: always
+    container_name: dbdestino
+    environment:
+      - POSTGRES_PASSWORD=kiq01
+      - POSTGRES_USER=kiq 
+      - POSTGRES_DB=kiqdb
+    ports:
+      - 5434:5432
+
+  pgadminMany:
+    image: dpage/pgadmin4
+    restart: always
+    container_name: pgadminMany
+    ports:
+      - 8081:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=kiq@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin1 
+    depends_on:
+      - dbfonte
+      - dbdestino
