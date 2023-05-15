@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: post-pod
+spec:
+  containers:
+    - name: postgresdb
+      image: postgres:latest
+      ports:
+        - containerPort: 5432
+      envFrom:
+        - configMapRef:
+            name: post-configmap # We will set all this configmap variables to this pod

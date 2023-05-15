@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: post-configmap
+data:
+    POSTGRES_PASSWORD: kiq01
+    POSTGRES_USER: kiq
+    PGADMIN_DEFAULT_EMAIL: kiq@gmail.com
+    PGADMIN_DEFAULT_PASSWORD: pgadmin1 
+    
