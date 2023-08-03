@@ -1,0 +1,9 @@
+{
+	"name": "data-factory-kiq",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "78cc1444-d5f2-48df-aed4-9dbe039ef885",
+		"tenantId": "a3bf4c1e-d28c-4cbb-ba23-404a8c032b4a"
+	}
+}
