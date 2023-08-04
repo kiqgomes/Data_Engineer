@@ -13,7 +13,11 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "datafactory_service",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
 				"name": "nt_staging_to_trusted",
