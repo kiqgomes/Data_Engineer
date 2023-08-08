@@ -1,0 +1,25 @@
+{
+	"name": "pipe_gatilho",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Databricks_Pipe",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/base/blobs/raw/",
+			"blobPathEndsWith": ".json",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/b4171438-a891-42c9-9ebc-7020736d1ef8/resourceGroups/DataFacAndBricks_resource/providers/Microsoft.Storage/storageAccounts/datalakekiq",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
