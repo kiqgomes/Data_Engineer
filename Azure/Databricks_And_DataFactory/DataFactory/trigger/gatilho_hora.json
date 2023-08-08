@@ -1,0 +1,24 @@
+{
+	"name": "gatilho_hora",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Databricks_Pipe",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 5,
+				"startTime": "2023-08-08T12:21:00",
+				"timeZone": "E. South America Standard Time"
+			}
+		}
+	}
+}
