@@ -1,0 +1,164 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Nome do Data Factory",
+			"defaultValue": "data-factory-kiq"
+		},
+		"datafactory_service_accessToken": {
+			"type": "secureString",
+			"metadata": "Cadeia de caracteres segura para 'accessToken' de 'datafactory_service'"
+		},
+		"datafactory_service_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0727-153512-lyv6y2s3"
+		},
+		"pipe_gatilho_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/b4171438-a891-42c9-9ebc-7020736d1ef8/resourceGroups/DataFacAndBricks_resource/providers/Microsoft.Storage/storageAccounts/datalakekiq"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Databricks_Pipe')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "nt_raw_to_staging",
+						"type": "DatabricksNotebook",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Repos/kaiquehelper2019@outlook.com/Data_Engineer/Azure/Databricks_And_DataFactory/Databricks_codes/raw_to_staging"
+						},
+						"linkedServiceName": {
+							"referenceName": "datafactory_service",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "nt_staging_to_trusted",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "nt_raw_to_staging",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Repos/kaiquehelper2019@outlook.com/Data_Engineer/Azure/Databricks_And_DataFactory/Databricks_codes/staging_to_trusted"
+						},
+						"linkedServiceName": {
+							"referenceName": "datafactory_service",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Error raw to staging",
+						"type": "Fail",
+						"dependsOn": [
+							{
+								"activity": "nt_raw_to_staging",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"message": {
+								"value": "@pipeline().Pipeline",
+								"type": "Expression"
+							},
+							"errorCode": {
+								"value": "@activity('nt_raw_to_staging').output",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/datafactory_service')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/datafactory_service')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://adb-499675465894049.9.azuredatabricks.net",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('datafactory_service_accessToken')]"
+					},
+					"existingClusterId": "[parameters('datafactory_service_properties_typeProperties_existingClusterId')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipe_gatilho')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Stopped",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "Databricks_Pipe",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/base/blobs/raw/",
+					"blobPathEndsWith": ".json",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('pipe_gatilho_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/Databricks_Pipe')]"
+			]
+		}
+	]
+}

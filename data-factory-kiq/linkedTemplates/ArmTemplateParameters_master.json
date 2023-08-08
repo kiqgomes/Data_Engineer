@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "data-factory-kiq"
+		},
+		"datafactory_service_accessToken": {
+			"value": ""
+		},
+		"datafactory_service_properties_typeProperties_existingClusterId": {
+			"value": "0727-153512-lyv6y2s3"
+		},
+		"pipe_gatilho_properties_typeProperties_scope": {
+			"value": "/subscriptions/b4171438-a891-42c9-9ebc-7020736d1ef8/resourceGroups/DataFacAndBricks_resource/providers/Microsoft.Storage/storageAccounts/datalakekiq"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
