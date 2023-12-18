@@ -25,6 +25,8 @@ logs
 
 .vscode
 
+.vs
+
 # Distribution / packaging
 .Python
 build/
