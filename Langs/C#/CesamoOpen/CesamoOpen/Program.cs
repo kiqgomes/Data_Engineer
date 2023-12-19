@@ -48,52 +48,50 @@ void Logo()
 
 void CalcOperation()
 {
-
-
     Console.Clear();
     Console.WriteLine("Welcome to the Calc Environment");
-    Console.WriteLine("\nType 0 to return to the Main Menu\n");
-    Console.WriteLine("Write your operation type below!");
-    string opt = Console.ReadLine();
-    if (opt != null)
+    Console.WriteLine("\nANY KEY to return to the Main Menu or ENTER to continue\n");
+    ConsoleKeyInfo opt = Console.ReadKey(true);
+    ConsoleKeyInfo stopOpt;
+    if (opt.Key == ConsoleKey.Enter)
     {
-        while (!opt.Equals("0"))
+        do
         {
-            if (opt.Equals("0"))
-            {
-                Console.WriteLine("Backing to the Main Menu");
-                MainMenu();
-            }
-            else
-            {
-                Console.WriteLine("Type the numbers of your operation separated by a space ");
-                string[] numbers = Console.ReadLine().Split(" ");
+            Console.WriteLine("Write your operation type below!");
+            char operationOpt = char.Parse(Console.ReadLine());
 
-                double result = Operations_(opt, int.Parse(numbers[0]), int.Parse(numbers[1]));
+            Console.WriteLine("Type the numbers of your operation separated by a space ");
+            string[] numbers = Console.ReadLine().Split(" ");
 
-                Console.WriteLine($"Result: {result}");
+            double result = Operations_(operationOpt, int.Parse(numbers[0]), int.Parse(numbers[1]));
 
-                Console.WriteLine("Don't wanna do more operations?");
+            Console.WriteLine($"Result: {result}");
 
-                Console.WriteLine("\nType 0 to return to the Main Menu\n");
-            }
-        }
+            Console.WriteLine("Don't wanna do more operations?");
+
+            Console.WriteLine("\nType ANY KEY to stop the calcs and go back to the Main Menu or ENTER to keep the calcs\n");
+            stopOpt = Console.ReadKey(true);
+
+        } while (stopOpt.Key == ConsoleKey.Enter);
+
+        MainMenu();
+        
     }
     else
     {
-        Console.WriteLine("I can't do anything with null values\nSorry!");
+        MainMenu();
     }
 
 }
 
-double Operations_(string opt,int n1, int n2)
+double Operations_(char operationOpt, int n1, int n2)
 {
 
     double result = 0;
 
     switch (opt)
     {
-        case "+":
+        case '+':
             result = n1 + n2;
             break;
         case "-":
@@ -110,6 +108,7 @@ double Operations_(string opt,int n1, int n2)
             break; 
         default:
             Console.WriteLine("So sorry, we haven't this operation!");
+            CalcOperation();
             break;
     }
 
@@ -127,5 +126,11 @@ void ShowHist()
         Console.WriteLine($"{hist[i]}");
     }
     Console.WriteLine("\n");
+
+    Console.WriteLine("Type ANY KEY to go back to the Main Menu");
+    ConsoleKeyInfo opt = Console.ReadKey(true);
+
     MainMenu();
+    Console.Clear();
+    
 }
