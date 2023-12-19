@@ -1,7 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Diagnostics.Metrics;
 using System.Runtime.InteropServices;
 
-List<double> hist = new List<double>();  
+Dictionary <char,List<double>> hist = new Dictionary<char, List<double>>();
 
 void MainMenu()
 {
@@ -89,21 +90,21 @@ double Operations_(char operationOpt, int n1, int n2)
 
     double result = 0;
 
-    switch (opt)
+    switch (operationOpt)
     {
         case '+':
             result = n1 + n2;
             break;
-        case "-":
+        case '-':
             result = n1 - n2;
             break;
-        case "*":
+        case '*':
             result = n1 * n2;
             break;
-        case "/":
+        case '/':
             result = n1 / n2;
             break;
-        case "%":
+        case '%':
             result = n1 % n2;
             break; 
         default:
@@ -112,7 +113,12 @@ double Operations_(char operationOpt, int n1, int n2)
             break;
     }
 
-    hist.Add(result);
+    if (hist.ContainsKey(operationOpt)) {
+        hist[operationOpt].Add(result);
+    }
+    else {
+        hist.Add(operationOpt, [result]);
+    }
 
     return result;
 };
@@ -121,9 +127,9 @@ void ShowHist()
 {
     Console.Clear();
     Console.WriteLine("Last results");
-    for (int i = 0; i < hist.Count; i++)
+    foreach (char key in hist.Keys)
     {
-        Console.WriteLine($"{hist[i]}");
+        Console.WriteLine($"{key} : [{hist[key]}]");
     }
     Console.WriteLine("\n");
 
