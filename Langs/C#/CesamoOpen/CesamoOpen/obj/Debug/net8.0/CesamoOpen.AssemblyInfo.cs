@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CesamoOpen")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49c5151a55ef241aacb9d03a5eed965af8040164")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2b985c2c9e09772380dc456542cd4691e28c36c")]
 [assembly: System.Reflection.AssemblyProductAttribute("CesamoOpen")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CesamoOpen")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

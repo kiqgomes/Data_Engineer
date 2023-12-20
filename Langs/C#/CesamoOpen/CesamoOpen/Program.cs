@@ -129,7 +129,7 @@ void ShowHist()
     Console.WriteLine("Last results");
     foreach (char key in hist.Keys)
     {
-        Console.WriteLine($"{key} : [{hist[key]}]");
+        Console.WriteLine($"{key} : [{String.Join(",", hist[key])}]");
     }
     Console.WriteLine("\n");
 
